@@ -1,11 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fan Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Justin Bieber Fan Portal</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: #ff758c;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffe;
+    }
+
+    header {
+      background: linear-gradient(135deg, #ff7eb3, #ff758c);
+      color: white;
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 2rem auto;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #ff4b6e;
+      text-align: center;
+    }
+
+    section p {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 1rem auto;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .videos iframe {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+    }
+
+    .like-section, .message-section {
+      text-align: center;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #ff758c;
+      border: none;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #ff4b6e;
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    #fanMessages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .message-card {
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      justify-items: center;
+    }
+
+    .timeline-item {
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .timeline-item img {
+      width: 150px;
+      border-radius: 10px;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-item:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
-    
+
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#videos">Videos</a>
+    <a href="#likes">Like</a>
+    <a href="#messages">Messages</a>
+    <a href="#timeline">Timeline</a>
+  </nav>
+
+  <header>
+    <h1>✨ Justin Bieber Fan Portal ✨</h1>
+    <p>Everything about the one and only Justin Bieber in one place!</p>
+  </header>
+
+  <div class="container">
+
+    <!-- About Section -->
+    <section id="about">
+      <h2>About Justin</h2>
+      <p>Justin Drew Bieber is a Canadian singer and songwriter who became a global pop sensation with hits like "Baby", "Sorry", and "Peaches". Fans around the world celebrate his music, style, and inspiring journey. 💖</p>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+      <h2>Photo Gallery</h2>
+      <div class="gallery">
+        <img src="https://media.gq.com/photos/56bcb218cdf2db6945d2ef93/1:1/w_2000,h_2000,c_limit/bieber-coverstory-square.jpg" alt="Justin 1">
+        <img src="https://media.cnn.com/api/v1/images/stellar/prod/190326145845-01-justin-bieber-unf.jpg?q=w_3000,h_2190,x_0,y_0,c_fill" alt="Justin 2">
+        <img src="https://preview.redd.it/justin-bieber-posts-new-selfie-v0-q0v8kg4kcd1c1.jpg?auto=webp&s=a9448893c2d346c0c1cb567e46c73fc4ea79e10e" alt="Justin 3">
+      </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section id="videos">
+      <h2>Watch some of Justin's music videos!!!</h2>
+      <div class="videos">
+        <iframe src="https://www.youtube.com/embed/tQ0yjYUFKAE" title="Justin Video 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/fRh_vgS2dFE" title="Justin Video 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <!-- Likes Section -->
+    <section class="like-section" id="likes">
+      <h2>Give Justin a Like 💕</h2>
+      <button id="likeBtn">Like ❤️</button>
+      <p id="likeCount">0 Likes</p>
+    </section>
+
+    <!-- Message Form Section -->
+    <section class="message-section" id="messages">
+      <h2>Send a Message to Justin 💌</h2>
+      <form id="messageForm">
+        <input type="text" id="fanName" placeholder="Your Name" required>
+        <textarea id="fanMessage" placeholder="Write your message here..." rows="4" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <p id="messageFeedback" style="color: green; margin-top: 1rem;"></p>
+    </section>
+
+    <!-- Fan Messages Section -->
+    <section>
+      <h2>Fan Messages ❤️</h2>
+      <div id="fanMessages"></div>
+    </section>
+
+    <!-- Albums & Timeline Section -->
+    <section id="timeline">
+      <h2>Justin's Albums & Timeline 📅</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <img src="https://i.scdn.co/image/ab67616d0000b2737e16c7d1c8e67fd5abb6daa5" alt="My World 2.0">
+          <h3>My World 2.0 (2010)</h3>
+          <p>Justin's breakout album featuring "Baby" that launched him to global fame.</p>
+        </div>
+        <div class="timeline-item">
+          <img src="https://upload.wikimedia.org/wikipedia/en/0/01/Believe-JB-Album.jpg" alt="Believe">
+          <h3>Believe (2012)</h3>
+          <p>A pop & dance album with hits like "Boyfriend" and "As Long As You Love Me".</p>
+        </div>
+        <div class="timeline-item">
+          <img src="https://images.genius.com/cff977262de4bf712a530580d27c7412.1000x1000x1.jpg" alt="Purpose">
+          <h3>Purpose (2015)</h3>
+          <p>Featuring chart-toppers like "Sorry" and "Love Yourself".</p>
+        </div>
+        <div class="timeline-item">
+          <img src="https://upload.wikimedia.org/wikipedia/en/0/08/Justin_Bieber_-_Justice.png" alt="Justice">
+          <h3>Justice (2021)</h3>
+          <p>Popular hits like "Peaches" and "Anyone".</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>Made with ❤️ by a true fan | © 2025</p>
+  </footer>
+
+  <script>
+    // Like Button
+    let count = 0;
+    const likeBtn = document.getElementById("likeBtn");
+    const likeCount = document.getElementById("likeCount");
+
+    likeBtn.addEventListener("click", () => {
+      count++;
+      likeCount.textContent = count + (count === 1 ? " Like" : " Likes");
+    });
+
+    // Fan Messages
+    const messageForm = document.getElementById("messageForm");
+    const fanMessages = document.getElementById("fanMessages");
+    const messageFeedback = document.getElementById("messageFeedback");
+
+    messageForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("fanName").value;
+      const message = document.getElementById("fanMessage").value;
+
+      const messageCard = document.createElement("div");
+      messageCard.classList.add("message-card");
+      messageCard.innerHTML = `<strong>${name}:</strong> <p>${message}</p>`;
+      fanMessages.appendChild(messageCard);
+
+      messageFeedback.textContent = "Message sent!";
+      messageForm.reset();
+    });
+
+    // Scroll Animation
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
 </body>
 </html>
+
